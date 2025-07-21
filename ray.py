@@ -2,6 +2,7 @@ import streamlit as st
 from datetime import datetime
 import time
 import base64
+from pytz import timezone
 
 # Função para converter imagem em base64
 def imagem_base64(caminho):
@@ -38,6 +39,8 @@ st.write("Contagem Regressiva para o maior evento astronomico do planeta")
 
 # Data alvo: 21 de julho de 2025
 data_aniversario = datetime(2025, 7, 21, 0, 0, 0)
+fuso_brasil = timezone("America/Sao_Paulo")
+agora = datetime.now(fuso_brasil)
 
 # Placeholder da contagem
 contador = st.empty()
@@ -48,7 +51,7 @@ while True:
     restante = data_aniversario - agora
 
     if restante.total_seconds() <= 0:
-        contador.markdown("## 🎂 Já é o aniversário! Parabéns!")
+        contador.markdown("## 🎂 Feliz aniversário minha querida! Parabéns!")
         break
 
     dias = restante.days
