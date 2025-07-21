@@ -33,8 +33,9 @@ st.markdown(
 )
 
 # Título e subtítulo
-st.title("🎉 Viva a Rayane")
+st.title("🎉 Viva a Rayane 🎉")
 st.write("Contagem Regressiva para o maior evento astronômico do planeta")
+st.write("Não é sempre que se faz 20 aninhos")
 
 # Fuso horário do Brasil
 fuso_brasil = timezone("America/Sao_Paulo")
@@ -51,7 +52,7 @@ while True:
     restante = data_aniversario - agora
 
     if restante.total_seconds() <= 0:
-        contador.markdown("## 🎂 Já é o aniversário! Parabéns!")
+        contador.markdown("## 🎂 Parabéns querida Rayane, que seu dia seja tão especial quanto você🎉! ")
         break
 
     dias = restante.days
