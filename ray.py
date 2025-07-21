@@ -13,45 +13,45 @@ def imagem_base64(caminho):
 # Converta a imagem para base64
 imagem_fundo = imagem_base64("fundo.jpeg")
 
-# Estilo CSS ajustado para imagem de fundo mais suave e discreta
+# Estilo CSS com imagem de fundo e texto branco
 st.markdown(
     f"""
     <style>
     .stApp {{
-    background: url("data:image/jpeg;base64,{imagem_fundo}");
-    background-size: 100%;
-    background-repeat: no-repeat;
-    background-position: center;
+        background: url("data:image/jpeg;base64,{imagem_fundo}");
+        background-size: 48%;
+        background-repeat: no-repeat;
+        background-position: center;
     }}
 
     h1, h2, h3, h4, h5, h6, p {{
-        color: whith !important;
+        color: white !important;
     }}
-    
     </style>
     """,
     unsafe_allow_html=True
 )
 
+# Título e subtítulo
+st.title("🎉 Viva a Rayane")
+st.write("Contagem Regressiva para o maior evento astronômico do planeta")
 
-st.title("🎉Viva a Rayane")
-st.write("Contagem Regressiva para o maior evento astronomico do planeta")
-
-# Data alvo: 21 de julho de 2025
-data_aniversario = datetime(2025, 7, 21, 0, 0, 0)
+# Fuso horário do Brasil
 fuso_brasil = timezone("America/Sao_Paulo")
-agora = datetime.now(fuso_brasil)
 
-# Placeholder da contagem
+# Data e hora do evento (ajuste aqui se quiser outro horário!)
+data_aniversario = fuso_brasil.localize(datetime(2025, 7, 21, 0, 0, 0))
+
+# Placeholder para a contagem
 contador = st.empty()
 
-# Loop da contagem com tempo real
+# Loop da contagem regressiva
 while True:
-    agora = datetime.now()
+    agora = datetime.now(fuso_brasil)
     restante = data_aniversario - agora
 
     if restante.total_seconds() <= 0:
-        contador.markdown("## 🎂 Feliz aniversário minha querida! Parabéns!")
+        contador.markdown("## 🎂 Já é o aniversário! Parabéns!")
         break
 
     dias = restante.days
